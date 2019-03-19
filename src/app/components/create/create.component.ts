@@ -32,33 +32,35 @@ optionSelected: any;
   }
  
   fetchStates(){
-    this.stateService
-    .getState()
-    .subscribe((data:State[])=>{
+    this.stateService.getState().subscribe((data:State[])=>{
+      console.log('state',data);
+      
       this.states=data;
      // console.log('data requested!!!');
       console.log(this.states);
     });
   }
-  onChangeState(){
-   this.districtService
-   .getDistrict()
-    .subscribe((data:District[])=>{
-     this.district=data;
-     
-   console.log(this.district);
-    });
-  }
-  onChangeStatenew(stateid: number){
-    this.districtService
-    .getDistrictsfill(stateid)
-    .subscribe((data:District[])=>{
-    this.district=data;
+  getDistrict(value){
+    console.log(value);
+    this.districtService.getDistrict(value).subscribe((data:District[])=>{
+      this.district=data;
       
     console.log(this.district);
-     
      });
-   }
+  }
+  onChangeState(){
+   
+  }
+  // onChangeStatenew(stateid: number){
+  //   this.districtService
+  //   .getDistrictsfill(stateid)
+  //   .subscribe((data:District[])=>{
+  //   this.district=data;
+      
+  //   console.log(this.district);
+     
+  //    });
+  //  }
   
 
 

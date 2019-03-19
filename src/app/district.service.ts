@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {State} from './state.model';
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,20 @@ export class DistrictService {
 
    }
 
-   getDistrict(){
+   getDistrict(stateid){
    // return this.http.get(`${this.uri}/districts/${stateid}`);
-    return this.http.get(`${this.uri}/districts`);
+   const state = {
+    stateid: parseInt(stateid),
+   
+  };
+  console.log(state);
+  return this.http.post(`${this.uri}/districts`,state,{
+    headers:new HttpHeaders({
+      'content-type':'application/json'
+  })
+  }
+  );
+    //return this.http.post(`${this.uri}/districts`);
   }
 
   getDistrictsfill(stateid:number) {

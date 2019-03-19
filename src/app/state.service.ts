@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {State} from './state.model';
 
 @Injectable({
@@ -27,7 +27,13 @@ export class StateService {
       stateid: stateid,
       statename: statename
     };
-    return this.http.post(`${this.uri}/states/add`,state);
+    console.log(state);
+    return this.http.post(`${this.uri}/states/add`,state,{
+      headers:new HttpHeaders({
+        'content-type':'application/json'
+    })
+    }
+    );
    }
 
     

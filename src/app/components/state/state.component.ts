@@ -18,6 +18,7 @@ export class StateComponent implements OnInit {
 }
 
 addState(stateid,statename){
+  console.log(stateid,statename);
   this.stateService.addState(stateid, statename).subscribe(() =>{
     this.router.navigate(['/list']);
   });
